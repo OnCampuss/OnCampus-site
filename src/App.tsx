@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Home, Info, List, Mail, Download, Menu, X } from 'lucide-react';
 import BackgroundSVG from './background.svg';
 import { motion } from 'framer-motion';
-import PlaystoreLogo from './google-play-store-logo-1.png';
-import ApplestoreLogo from './App-Store-Logo.png';
+import AppStoreBadge from "./AppStoreBadge.png"; 
+import PlayStoreBadge from './PlayStoreBadge.png';
 
 const App: React.FC = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
@@ -20,6 +22,10 @@ const App: React.FC = () => {
     setLastScrollY(currentScrollY);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
@@ -30,126 +36,257 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      {/* Navbar - Aplicando classes condicionalmente com base no estado showNavbar */}
-      <nav className={`fixed top-0 w-full bg-base3 bg-opacity-20 text-white p-4 transition-transform duration-300 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'} z-10`}>
-        <ul className="flex justify-around font-title">
-          <li>
-            <a href="#home" className="px-3 py-4 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#funcionalidades" className="px-3 py-4 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
-              Funcionalidades
-            </a>
-          </li>
-          <li>
-            <a href="#sobre" className="px-3 py-4 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a href="#contato" className="px-3 py-4 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
-              Contato
-            </a>
-          </li>
-          <li>
-            <a href="#download" className="px-3 py-4 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
-              Download
-            </a>
-          </li>
-        </ul>
+      {/* Navbar */}
+      <nav className={`fixed top-0 w-full bg-base4 bg-opacity-90 text-white px-4 py-2 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'} z-10`}>
+        <div className="flex justify-between items-center">
+          {/* Logo ou nome */}
+          <a href="#home" className="font-title text-2xl">OnCampus</a>
+
+          {/* Botão do Menu Hamburguer para dispositivos móveis */}
+          <button onClick={toggleMenu} className="sm:hidden focus:outline-none">
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+          {/* Links de navegação para telas maiores (sm e acima) */}
+          <ul className="hidden sm:flex space-x-4 font-title">
+            <li>
+              <a href="#home" className="px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300 flex items-center">
+                <Home className="mr-2" /> Home
+              </a>
+            </li>
+            <li>
+              <a href="#sobre" className="px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300 flex items-center">
+                <Info className="mr-2" /> Sobre
+              </a>
+            </li>
+            <li>
+              <a href="#funcionalidades" className="px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300 flex items-center">
+                <List className="mr-2" /> Funcionalidades
+              </a>
+            </li>
+            <li>
+              <a href="#contato" className="px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300 flex items-center">
+                <Mail className="mr-2" /> Contato
+              </a>
+            </li>
+            <li>
+              <a href="#download" className="px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300 flex items-center">
+                <Download className="mr-2" /> Download
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Menu responsivo para dispositivos móveis */}
+        {isMenuOpen && (
+          <ul className="flex flex-col sm:hidden space-y-2 mt-4 font-title">
+            <li>
+              <a href="#home" onClick={toggleMenu} className="block px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
+                <Home className="inline mr-2" /> Home
+              </a>
+            </li>
+            <li>
+              <a href="#sobre" onClick={toggleMenu} className="block px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
+                <Info className="inline mr-2" /> Sobre
+              </a>
+            </li>
+            <li>
+              <a href="#funcionalidades" onClick={toggleMenu} className="block px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
+                <List className="inline mr-2" /> Funcionalidades
+              </a>
+            </li>
+            <li>
+              <a href="#contato" onClick={toggleMenu} className="block px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
+                <Mail className="inline mr-2" /> Contato
+              </a>
+            </li>
+            <li>
+              <a href="#download" onClick={toggleMenu} className="block px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300">
+                <Download className="inline mr-2" /> Download
+              </a>
+            </li>
+          </ul>
+        )}
       </nav>
 
       {/* Home Section */}
-      <section id="home" className="h-screen bg-base4 flex flex-col justify-center items-start relative p-8">
+      <section id="home" className="min-h-screen bg-base4 flex flex-col justify-center items-start relative p-4 sm:p-8">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-7xl font-title font-bold text-decorativa1 text-shadow ml-40 text-left">
-          OnCampus
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-4 text-2xl font-text text-base3 text-shadow ml-40 text-left">
-          Seu aplicativo de transporte universitário!
-        </motion.p>
-      </section>
-
-      {/* Funcionalidades Section */}
-      <section id="funcionalidades" className="h-screen bg-base2 text-base3 flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-title font-bold">Funcionalidades</h2>
-        <ul className="mt-6 space-y-4 text-xl font-text">
-          <li>- Seleção de dias de transporte</li>
-          <li>- Rotas e horários personalizados</li>
-          <li>- Acompanhamento financeiro</li>
-        </ul>
+        <div className="flex flex-col sm:flex-row justify-between items-center w-full">
+          <div className="text-left sm:ml-40">
+            <motion.h1
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl sm:text-7xl font-title font-bold text-decorativa1 text-shadow">
+              OnCampus
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-4 text-xl sm:text-2xl font-text text-base3 text-shadow">
+              Seu aplicativo de transporte universitário!
+            </motion.p>
+          </div>
+          <div className="mt-8 sm:mt-0 sm:mr-40">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="w-[250px] h-[500px] sm:w-[350px] sm:h-[700px] bg-base2 rounded-lg shadow-lg flex items-center justify-center">
+              <img
+                // src={AppPreviewImage}
+                alt="Prévia do App OnCampus"
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Sobre Section */}
-      <section id="sobre" className="h-screen bg-base4 text-base1 flex flex-col justify-center items-center relative">
-        {/* SVG como fundo */}
+      <section id="sobre" className="h-auto sm:h-screen bg-base2 text-base1 flex flex-col justify-center items-center relative pt-12">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
-        <h2 className="text-4xl font-title font-bold">Sobre Nós</h2>
-        <p className="mt-4 text-2xl font-text max-w-2xl text-center">
-          Nosso aplicativo foi criado para facilitar o transporte universitário, trazendo praticidade para estudantes e motoristas.
+        <h2 className="text-4xl font-title font-bold mb-6 mt-12">Sobre Nós</h2>
+        <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
+        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+          Nosso aplicativo foi criado para facilitar o transporte universitário, trazendo praticidade para estudantes, prestadores de serviços e motoristas.
         </p>
+        <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 sm:space-x-8">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
+            <img
+              // src={SobreImage1}
+              alt="Sobre nós"
+              className="w-full h-full object-contain mb-4"
+            />
+            <p className="text-lg text-center font-text">Integração com o sistema universitário.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
+            <img
+              // src={SobreImage2}
+              alt="Sobre nós"
+              className="w-full h-full object-contain mb-4"
+            />
+            <p className="text-lg text-center font-text">Facilidade na escolha de rotas.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Funcionalidades Section */}
+      <section id="funcionalidades" className="min-h-screen bg-base4 text-base1 flex flex-col justify-center items-center relative pt-12">
+        <img
+          src={BackgroundSVG}
+          alt="Background decoration"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <h2 className="text-4xl font-title font-bold mb-6">Funcionalidades</h2>
+        <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
+        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+          O OnCampus oferece uma variedade de funcionalidades para melhorar a experiência dos usuários.
+        </p>
+        <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 sm:space-x-8">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
+            <img
+              // src={FuncionalidadeImage1}
+              alt="Funcionalidade 1"
+              className="w-full h-full object-contain mb-4"
+            />
+            <p className="text-lg text-center font-text">Rastreamento em tempo real.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
+            <img
+              // src={FuncionalidadeImage2}
+              alt="Funcionalidade 2"
+              className="w-full h-full object-contain mb-4"
+            />
+            <p className="text-lg text-center font-text">Notificações instantâneas.</p>
+          </motion.div>
+        </div>
       </section>
 
       {/* Contato Section */}
-      <section id="contato" className="h-screen bg-decorativa2 text-base1 flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-title font-bold">Contato</h2>
-        <form className="mt-6 flex flex-col space-y-4">
-          <input type="text" placeholder="Seu nome" className="p-2 rounded bg-base1 text-base2" />
-          <input type="email" placeholder="Seu e-mail" className="p-2 rounded bg-base1 text-base2" />
-          <textarea placeholder="Sua mensagem" className="p-2 rounded bg-base1 text-base2"></textarea>
-          <button className="bg-decorativa1 text-base1 py-2 px-4 rounded hover:bg-decorativa2">Enviar</button>
-        </form>
-      </section>
-
-      <section id="download" className="h-screen bg-base4 flex flex-col justify-center items-center text-center relative">
+      <section id="contato" className="min-h-screen bg-base2 text-base1 flex flex-col justify-center items-center relative pt-12">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
-        <h2 className="text-4xl font-title font-bold text-decorativa1 mb-6">Baixe Nosso App</h2>
-        <p className="text-xl font-text text-base3 mb-4">Disponível na App Store e Google Play</p>
-        <div className="flex space-x-4">
-          <a
-            href="https://apps.apple.com/app/idYOUR_APP_ID" // Substitua pelo link real da App Store
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-40 p-4 bg-decorativa1 text-white rounded shadow-md hover:bg-decorativa2 transition duration-300"
-          >
-            <img src={ApplestoreLogo} alt="App Store" className="h-6 mr-2" />
-            App Store
-          </a>
-          <a
-            href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" // Substitua pelo link real da Play Store
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-40 p-4 bg-decorativa1 text-white rounded shadow-md hover:bg-decorativa2 transition duration-300"
-          >
-            <img src={PlaystoreLogo} alt="Google Play" className="h-6 mr-2" />
-            Play Store
-          </a>
+        <h2 className="text-4xl font-title font-bold mb-6">Contato</h2>
+        <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
+        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+          Entre em contato para mais informações ou sugestões!
+        </p>
+        <form className="flex flex-col items-center w-full max-w-md">
+          <input
+            type="text"
+            placeholder="Nome"
+            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
+          />
+          <textarea
+            placeholder="Mensagem"
+            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
+            rows={4}
+          ></textarea>
+          <button type="submit" className="bg-decorativa1 text-white px-4 py-2 rounded-lg hover:bg-decorativa2 transition-colors duration-300">
+            Enviar
+          </button>
+        </form>
+      </section>
+
+      {/* Download Section */}
+      <section id="download" className="h-auto sm:h-screen bg-base4 text-base1 flex flex-col justify-center items-center relative pt-12">
+        <img
+          src={BackgroundSVG}
+          alt="Background decoration"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <h2 className="text-4xl font-title font-bold  mb-6">Em Breve ...</h2>
+        <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
+        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+          Baixe nosso aplicativo e revolucione o transporte universitário!
+        </p>
+        <div className="flex flex-col sm:flex-row items-center">
+          <img src={AppStoreBadge} alt="Baixar na App Store" className="w-48 mb-4 sm:mb-0 sm:mr-4" />
+          <img src={PlayStoreBadge} alt="Baixar na Google Play" className="w-48" />
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-base2 text-base1 py-4 text-center">
+        <p className="text-sm font-text">© 2024 OnCampus. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
-};
+}
 
 export default App;
