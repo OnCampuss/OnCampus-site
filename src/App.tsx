@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Home, Info, List, Mail, Download, Menu, X } from 'lucide-react';
 import BackgroundSVG from './background.svg';
 import { motion } from 'framer-motion';
-import AppStoreBadge from "./AppStoreBadge.png"; 
+import AppStoreBadge from "./AppStoreBadge.png";
 import PlayStoreBadge from './PlayStoreBadge.png';
 
 const App: React.FC = () => {
@@ -25,7 +25,6 @@ const App: React.FC = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
@@ -41,13 +40,9 @@ const App: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo ou nome */}
           <a href="#home" className="font-title text-2xl">OnCampus</a>
-
-          {/* Botão do Menu Hamburguer para dispositivos móveis */}
           <button onClick={toggleMenu} className="sm:hidden focus:outline-none">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-
-          {/* Links de navegação para telas maiores (sm e acima) */}
           <ul className="hidden sm:flex space-x-4 font-title">
             <li>
               <a href="#home" className="px-3 py-2 rounded hover:bg-decorativa1 hover:text-white transition-colors duration-300 flex items-center">
@@ -76,8 +71,6 @@ const App: React.FC = () => {
             </li>
           </ul>
         </div>
-
-        {/* Menu responsivo para dispositivos móveis */}
         {isMenuOpen && (
           <ul className="flex flex-col sm:hidden space-y-2 mt-4 font-title">
             <li>
@@ -109,12 +102,11 @@ const App: React.FC = () => {
         )}
       </nav>
 
-      {/* Home Section */}
       <section id="home" className="min-h-screen bg-base4 flex flex-col justify-center items-start relative p-4 sm:p-8">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
         <div className="flex flex-col sm:flex-row justify-between items-center w-full">
           <div className="text-left sm:ml-40">
@@ -149,16 +141,15 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Sobre Section */}
       <section id="sobre" className="h-auto sm:h-screen bg-base2 text-base1 flex flex-col justify-center items-center relative pt-12">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
         <h2 className="text-4xl font-title font-bold mb-6 mt-12">Sobre Nós</h2>
         <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
-        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+        <p className="mt-2 mb-12 text-xl font-text max-w-2xl text-center">
           Nosso aplicativo foi criado para facilitar o transporte universitário, trazendo praticidade para estudantes, prestadores de serviços e motoristas.
         </p>
         <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 sm:space-x-8">
@@ -189,56 +180,81 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Funcionalidades Section */}
       <section id="funcionalidades" className="min-h-screen bg-base4 text-base1 flex flex-col justify-center items-center relative pt-12">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
         <h2 className="text-4xl font-title font-bold mb-6">Funcionalidades</h2>
         <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
-        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+        <p className="mt-2 mb-12 text-xl font-text max-w-2xl text-center">
           O OnCampus oferece uma variedade de funcionalidades para melhorar a experiência dos usuários.
         </p>
-        <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 sm:space-x-8">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
-            <img
-              // src={FuncionalidadeImage1}
-              alt="Funcionalidade 1"
-              className="w-full h-full object-contain mb-4"
-            />
-            <p className="text-lg text-center font-text">Rastreamento em tempo real.</p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
-            <img
-              // src={FuncionalidadeImage2}
-              alt="Funcionalidade 2"
-              className="w-full h-full object-contain mb-4"
-            />
-            <p className="text-lg text-center font-text">Notificações instantâneas.</p>
-          </motion.div>
+        <div className="flex flex-wrap justify-center space-y-8 sm:space-y-0 sm:space-x-14">
+          <div className="flex flex-col items-center w-full sm:w-[300px]">
+            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4">Estudante</h3>
+            <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
+              Informações sobre viagem, perfil de estudante, área financeira e controle de viagens em tempo real.
+            </p>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-base3 p-4 rounded-lg shadow-lg flex justify-center items-center h-[200px]">
+              <img
+                // src={FuncionalidadeImage1}
+                alt="Funcionalidade para Estudantes"
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </div>
+          <div className="flex flex-col items-center w-full sm:w-[300px]">
+            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4">Administrador</h3>
+            <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
+              Cadastro de viagens e acesso às informações dos estudantes, como uso do transporte e dados financeiros.
+            </p>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-base3 p-4 rounded-lg shadow-lg flex justify-center items-center h-[200px]">
+              <img
+                // src={FuncionalidadeImage2}
+                alt="Funcionalidade para Administradores"
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </div>
+          <div className="flex flex-col items-center w-full sm:w-[300px]">
+            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4">Motorista</h3>
+            <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
+              Iniciar rotas de viagens de forma rápida e eficiente.
+            </p>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-base3 p-4 rounded-lg shadow-lg flex justify-center items-center h-[200px]">
+              <img
+                // src={FuncionalidadeImage3}
+                alt="Funcionalidade para Motoristas"
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Contato Section */}
       <section id="contato" className="min-h-screen bg-base2 text-base1 flex flex-col justify-center items-center relative pt-12">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
         <h2 className="text-4xl font-title font-bold mb-6">Contato</h2>
         <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
-        <p className="mt-2 mb-12 text-2xl font-text max-w-2xl text-center">
+        <p className="mt-2 mb-12 text-xl font-text max-w-2xl text-center">
           Entre em contato para mais informações ou sugestões!
         </p>
         <form className="flex flex-col items-center w-full max-w-md">
@@ -257,18 +273,19 @@ const App: React.FC = () => {
             className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
             rows={4}
           ></textarea>
-          <button type="submit" className="bg-decorativa1 text-white px-4 py-2 rounded-lg hover:bg-decorativa2 transition-colors duration-300">
+          <button
+            type="submit"
+            className="bg-decorativa1 text-white px-8 py-2 rounded-lg hover:bg-decorativa2 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-decorativa2 focus:ring-opacity-50">
             Enviar
           </button>
         </form>
       </section>
 
-      {/* Download Section */}
       <section id="download" className="h-auto sm:h-screen bg-base4 text-base1 flex flex-col justify-center items-center relative pt-12">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" 
         />
         <h2 className="text-4xl font-title font-bold  mb-6">Em Breve ...</h2>
         <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
@@ -281,7 +298,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-base2 text-base1 py-4 text-center">
         <p className="text-sm font-text">© 2024 OnCampus. Todos os direitos reservados.</p>
       </footer>
