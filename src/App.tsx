@@ -4,6 +4,10 @@ import BackgroundSVG from './background.svg';
 import { motion } from 'framer-motion';
 import AppStoreBadge from "./AppStoreBadge.png";
 import PlayStoreBadge from './PlayStoreBadge.png';
+import LogoOnCampus from './LogoOnCampus.svg'
+import FuncionalidadeImagem1 from './studantImage.jpg'
+import FuncionalidadeImagem2 from './admImage.jpg'
+import FuncionalidadeImagem3 from './driverImage.jpg'
 
 const App: React.FC = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -35,10 +39,8 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      {/* Navbar */}
       <nav className={`fixed top-0 w-full bg-base4 bg-opacity-90 text-white px-4 py-2 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'} z-10`}>
         <div className="flex justify-between items-center">
-          {/* Logo ou nome */}
           <a href="#home" className="font-title text-2xl">OnCampus</a>
           <button onClick={toggleMenu} className="sm:hidden focus:outline-none">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -102,39 +104,40 @@ const App: React.FC = () => {
         )}
       </nav>
 
-      <section id="home" className="min-h-screen bg-base4 flex flex-col justify-center items-start relative p-4 sm:p-8">
+      <section id="home" className="min-h-screen bg-base4 flex flex-col justify-center items-center relative p-4 sm:p-8">
         <img
           src={BackgroundSVG}
           alt="Background decoration"
           className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
-        <div className="flex flex-col sm:flex-row justify-between items-center w-full">
-          <div className="text-left sm:ml-40">
+        <div className="flex flex-col sm:flex-row justify-center items-center w-full">
+          {/* Contêiner de texto */}
+          <div className="flex flex-col items-center sm:w-1/2 sm:mr-10 text-center sm:text-left">
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-4xl sm:text-7xl font-title font-bold text-decorativa1 text-shadow">
+              className="text-4xl sm:text-7xl font-title font-bold text-decorativa1 text-shadow mb-4">
               OnCampus
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-4 text-xl sm:text-2xl font-text text-base3 text-shadow">
+              className="text-xl sm:text-2xl font-text text-base3 text-shadow">
               Seu aplicativo de transporte universitário!
             </motion.p>
           </div>
-          <div className="mt-8 sm:mt-0 sm:mr-40">
+          <div className="mt-8 sm:mt-0 sm:w-1/2 flex justify-center items-center">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="w-[250px] h-[500px] sm:w-[350px] sm:h-[700px] bg-base2 rounded-lg shadow-lg flex items-center justify-center">
+              className="max-w-[800px] rounded-lg ml-20 flex items-center justify-center">
               <img
-                // src={AppPreviewImage}
+                src={LogoOnCampus}
                 alt="Prévia do App OnCampus"
-                className="w-full h-full object-contain"
+                className="w-full h-auto" 
               />
             </motion.div>
           </div>
@@ -186,14 +189,14 @@ const App: React.FC = () => {
           alt="Background decoration"
           className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
-        <h2 className="text-4xl font-title font-bold mb-6">Funcionalidades</h2>
+        <h2 className="text-4xl font-title font-bold mb-6 text-center">Funcionalidades</h2>
         <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
         <p className="mt-2 mb-12 text-xl font-text max-w-2xl text-center">
           O OnCampus oferece uma variedade de funcionalidades para melhorar a experiência dos usuários.
         </p>
-        <div className="flex flex-wrap justify-center space-y-8 sm:space-y-0 sm:space-x-14">
+        <div className="flex flex-wrap justify-center space-y-8 sm:space-y-0 sm:space-x-8">
           <div className="flex flex-col items-center w-full sm:w-[300px]">
-            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4">Estudante</h3>
+            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4 text-center">Estudante</h3>
             <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
               Informações sobre viagem, perfil de estudante, área financeira e controle de viagens em tempo real.
             </p>
@@ -201,16 +204,17 @@ const App: React.FC = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-base3 p-4 rounded-lg shadow-lg flex justify-center items-center h-[200px]">
+              className="bg-base4 p-4 rounded-lg shadow-lg flex justify-center items-center h-[250px]"
+            >
               <img
-                // src={FuncionalidadeImage1}
+                src={FuncionalidadeImagem1}
                 alt="Funcionalidade para Estudantes"
-                className="w-full h-full object-contain"
+                className="w-auto h-auto object-contain max-h-full" // Limita a altura da imagem
               />
             </motion.div>
           </div>
           <div className="flex flex-col items-center w-full sm:w-[300px]">
-            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4">Administrador</h3>
+            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4 text-center">Administrador</h3>
             <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
               Cadastro de viagens e acesso às informações dos estudantes, como uso do transporte e dados financeiros.
             </p>
@@ -218,16 +222,17 @@ const App: React.FC = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-base3 p-4 rounded-lg shadow-lg flex justify-center items-center h-[200px]">
+              className="bg-base4 p-4 rounded-lg shadow-lg flex justify-center items-center h-[250px]"
+            >
               <img
-                // src={FuncionalidadeImage2}
+                src={FuncionalidadeImagem2}
                 alt="Funcionalidade para Administradores"
-                className="w-full h-full object-contain"
+                className="w-auto h-auto object-contain max-h-full"
               />
             </motion.div>
           </div>
           <div className="flex flex-col items-center w-full sm:w-[300px]">
-            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4">Motorista</h3>
+            <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4 text-center">Motorista</h3>
             <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
               Iniciar rotas de viagens de forma rápida e eficiente.
             </p>
@@ -235,11 +240,12 @@ const App: React.FC = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-base3 p-4 rounded-lg shadow-lg flex justify-center items-center h-[200px]">
+              className="bg-base4 p-4 rounded-lg shadow-lg flex justify-center items-center h-[250px]"
+            >
               <img
-                // src={FuncionalidadeImage3}
+                src={FuncionalidadeImagem3}
                 alt="Funcionalidade para Motoristas"
-                className="w-full h-full object-contain"
+                className="w-auto h-auto object-contain max-h-full"
               />
             </motion.div>
           </div>
@@ -261,16 +267,16 @@ const App: React.FC = () => {
           <input
             type="text"
             placeholder="Nome"
-            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
+            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full text-black placeholder-gray-500"
           />
           <input
             type="email"
             placeholder="Email"
-            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
+            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full text-black placeholder-gray-500"
           />
           <textarea
             placeholder="Mensagem"
-            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full"
+            className="border-2 border-base3 p-2 mb-4 rounded-lg w-full text-black placeholder-gray-500"
             rows={4}
           ></textarea>
           <button
@@ -285,7 +291,7 @@ const App: React.FC = () => {
         <img
           src={BackgroundSVG}
           alt="Background decoration"
-          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         />
         <h2 className="text-4xl font-title font-bold  mb-6">Em Breve ...</h2>
         <div className="w-64 h-1 bg-decorativa1 mb-6"></div>
