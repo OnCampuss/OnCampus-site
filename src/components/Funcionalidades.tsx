@@ -22,7 +22,7 @@ const Funcionalidades: React.FC = () => {
           <div className="flex flex-col items-center w-full sm:w-[300px]">
             <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4 text-center">Estudante</h3>
             <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
-              Informações sobre viagem, perfil de estudante, área financeira e controle de viagens em tempo real.
+              Informações sobre viagem, perfil de estudante e controle de viagens em tempo real.
             </p>
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -40,7 +40,7 @@ const Funcionalidades: React.FC = () => {
           <div className="flex flex-col items-center w-full sm:w-[300px]">
             <h3 className="text-2xl font-title font-bold text-decorativa1 mb-4 text-center">Administrador</h3>
             <p className="text-lg text-center font-text mb-4 min-h-[100px] flex-grow">
-              Cadastro de viagens e acesso às informações dos estudantes, como uso do transporte e dados financeiros.
+              Cadastro de viagens e acesso às informações dos estudantes, uso do transporte e dados financeiros.
             </p>
             <motion.div
               initial={{ opacity: 0, x: 50 }}

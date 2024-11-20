@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BackgroundSVG from '../assets/background.svg';
+import SobreImage1 from '../assets/ImagemSobreOnCampus (6).png';
 
 const Sobre: React.FC = () => {
     return (
@@ -16,30 +17,14 @@ const Sobre: React.FC = () => {
                 Nosso aplicativo foi criado para facilitar o transporte universitário, trazendo praticidade para estudantes, prestadores de serviços e motoristas.
             </p>
             <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 sm:space-x-8">
-                <motion.div
+                <motion.img
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
-                    <img
-                        // src={SobreImage1}
-                        alt="Sobre nós"
-                        className="w-full h-full object-contain mb-4"
-                    />
-                    <p className="text-lg text-center font-text">Integração com o sistema universitário.</p>
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-base3 p-4 rounded-lg shadow-lg w-full sm:w-[300px] h-[350px] flex flex-col justify-center items-center">
-                    <img
-                        // src={SobreImage2}
-                        alt="Sobre nós"
-                        className="w-full h-full object-contain mb-4"
-                    />
-                    <p className="text-lg text-center font-text">Facilidade na escolha de rotas.</p>
-                </motion.div>
+                    src={SobreImage1}
+                    alt="Sobre nós"
+                    className="w-full sm:w-[380px] h-auto object-contain"
+                />
             </div>
         </section>
     );
