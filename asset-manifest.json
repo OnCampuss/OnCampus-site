@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/OnCampus-site/static/css/main.fdf03474.css",
+    "main.js": "/OnCampus-site/static/js/main.b20ea253.js",
+    "static/js/453.a8b523e8.chunk.js": "/OnCampus-site/static/js/453.a8b523e8.chunk.js",
+    "static/media/admImage.jpg": "/OnCampus-site/static/media/admImage.772a3ae5f8d4507ebe4a.jpg",
+    "static/media/driverImage.jpg": "/OnCampus-site/static/media/driverImage.06bb599e719bed922e72.jpg",
+    "static/media/studantImage.jpg": "/OnCampus-site/static/media/studantImage.188c1dced59c52d5ec6b.jpg",
+    "static/media/ImagemSobreOnCampus (6).png": "/OnCampus-site/static/media/ImagemSobreOnCampus (6).02f45ee1e3cc1152f78f.png",
+    "static/media/PlayStoreBadge.png": "/OnCampus-site/static/media/PlayStoreBadge.eb4f576bd3f0f2c0c6f8.png",
+    "static/media/background.svg": "/OnCampus-site/static/media/background.fa071497660d095921f640df7de404da.svg",
+    "static/media/AppStoreBadge.png": "/OnCampus-site/static/media/AppStoreBadge.51029e6ffe1bc31e1545.png",
+    "static/media/OnCampusLogo (1).png": "/OnCampus-site/static/media/OnCampusLogo (1).9652979ace4cc17e2152.png",
+    "index.html": "/OnCampus-site/index.html",
+    "main.fdf03474.css.map": "/OnCampus-site/static/css/main.fdf03474.css.map",
+    "main.b20ea253.js.map": "/OnCampus-site/static/js/main.b20ea253.js.map",
+    "453.a8b523e8.chunk.js.map": "/OnCampus-site/static/js/453.a8b523e8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fdf03474.css",
+    "static/js/main.b20ea253.js"
+  ]
+}
